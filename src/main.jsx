@@ -1,8 +1,8 @@
 import React, {useRef} from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.js'
+import App from './App'
 import './index.css'
-import Header from "./components/Header.js";
+import Header from "./components/Header";
 
 
 
