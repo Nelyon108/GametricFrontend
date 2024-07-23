@@ -17,7 +17,7 @@ export default function Announcements () {
     };
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/announcements')
+        axios.get('https://gametric.pythonanywhere.com/announcements')
           .then(response => {
             setAnnouncements(response.data);
           })
@@ -28,7 +28,7 @@ export default function Announcements () {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:5000/send_message', formData)
+        axios.post('https://gametric.pythonanywhere.com/send_message', formData)
           .then(response => {
             alert(response.data.message);
           })

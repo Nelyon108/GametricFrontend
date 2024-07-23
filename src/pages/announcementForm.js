@@ -16,7 +16,7 @@ function announcementForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:5000/announcements', formData)
+    axios.post('https://gametric.pythonanywhere.com/announcements', formData)
       .then(response => {
         alert(response.data.message);
         setFormData({ title: '', content: '' }); // Clear form after successful submission

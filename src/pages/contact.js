@@ -17,7 +17,7 @@ function contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:5000/send_message', formData)
+    axios.post('https://gametric.pythonanywhere.com/send_message', formData)
       .then(response => {
         alert(response.data.message);
       })
