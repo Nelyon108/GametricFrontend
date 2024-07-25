@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function announcementForm() {
+const announcementForm = () => {
   const [formData, setFormData] = useState({
     title: '',
     content: ''

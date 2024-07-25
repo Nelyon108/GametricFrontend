@@ -4,7 +4,7 @@ import announcementForm from './announcementForm';
 import contact from './contact';
 import Services from '../components/Services';
 
-function home() {
+const home = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [formData, setFormData] = useState({
     name: '',

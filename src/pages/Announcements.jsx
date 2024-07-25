@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-export default function Announcements () {
+const Announcements = () => {
     const [announcements, setAnnouncements] = useState([]);
     const [formData, setFormData] = useState({
       name: '',
@@ -70,3 +70,5 @@ export default function Announcements () {
     </div>
   )
 }
+
+export default Announcements;
