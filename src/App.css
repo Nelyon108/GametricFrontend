@@ -45,8 +45,9 @@
   flex-wrap: wrap;
 }
 
-.navigation a{
+.navigation p{
   color: white;
+  cursor: pointer;
 }
 
 .logo {

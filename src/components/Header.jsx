@@ -1,7 +1,8 @@
 import React from 'react'
 import logo from '../assets/GametricG.png';
 
-export default function Header() {
+
+const Header=() => {
 
     const ScrolltoBottom = () => {
         scrollBy(0, 1000000);
@@ -22,3 +23,5 @@ export default function Header() {
     </nav>
   )
 }
+
+export default Header;

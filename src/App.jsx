@@ -6,9 +6,14 @@ import Contact from './pages/contact';
 import AnnouncementForm from './pages/announcementForm';
 import About from './pages/about';
 import Announcements from './pages/Announcements';
+import logo from './assets/GametricG.png';
 
 const App =() => {  
   const [page, setPage] = useState('Home');
+
+  const ScrolltoBottom = () => {
+    scrollBy(0, 1000000);
+} 
 
   const renderPage = () => {
     switch (page) {
@@ -29,13 +34,18 @@ const App =() => {
 
   return (
     <div>
-      <nav>
-        <button onClick={() => setPage('Home')}>Home</button>
-        <button onClick={() => setPage('About')}>About</button>
-        <button onClick={() => setPage('Contact')}>Contact</button>
-        <button onClick={() => setPage('Announcements')}>Announcements</button>
-        <button onClick={() => setPage('AnnouncementForm')}>New Announcement</button>
-      </nav>
+      <nav className='header'>
+        <a href="/"><img src={logo} alt="Gametric Logo" className='logo' /></a>
+        <div className='navigation'>
+        <p onClick={() => setPage('Home')}>Home</p>
+        <p onClick={() => setPage('About')}>About</p>
+        <p onClick={() => setPage('Contact')}>Contact</p>
+        <p onClick={() => setPage('Announcements')}>Announcements</p>
+        {/* <button onClick={() => setPage('AnnouncementForm')}>New Announcement</button> */}
+        </div>
+
+        <button onClick={ScrolltoBottom}>Contact Us</button>
+    </nav>
       {renderPage()}
     </div>
   );

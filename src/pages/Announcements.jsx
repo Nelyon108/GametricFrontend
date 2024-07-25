@@ -38,6 +38,7 @@ const Announcements = () => {
       };
 
   return (
+    
     <div className="announcements-section">
       <h1>Announcements</h1>
       <ul className="announcement-list">
