@@ -27,16 +27,20 @@ const Announcements = () => {
     //       });
     //   }, []);
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('https://gametric.pythonanywhere.com/send_message', formData)
-          .then(response => {
-            alert(response.data.message);
-          })
-          .catch(error => {
-            console.error('There was an error sending the message!', error);
-          });
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const dataToSend = {
+        title: `${formData.name} ${formData.email}`,
+        content: formData.message
       };
+      axios.post('https://gametric.pythonanywhere.com/announcements', dataToSend)
+        .then(response => {
+          alert(response.data.message);
+        })
+        .catch(error => {
+          console.error('There was an error sending the message!', error);
+        });
+    };
 
   return (
     

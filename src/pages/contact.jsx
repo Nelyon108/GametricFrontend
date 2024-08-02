@@ -17,7 +17,11 @@ const contact =() => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://gametric.pythonanywhere.com/send_message', formData)
+    const dataToSend = {
+      title: `${formData.name} ${formData.email}`,
+      content: formData.message
+    };
+    axios.post('https://gametric.pythonanywhere.com/announcements', dataToSend)
       .then(response => {
         alert(response.data.message);
       })
