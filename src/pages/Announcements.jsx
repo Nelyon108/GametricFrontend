@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import {AnnouncementsData} from "../components/AnnouncementsData";
 
 const Announcements = () => {
     const [announcements, setAnnouncements] = useState([]);
@@ -16,15 +17,15 @@ const Announcements = () => {
       });
     };
 
-    useEffect(() => {
-        axios.get('https://gametric.pythonanywhere.com/announcements')
-          .then(response => {
-            setAnnouncements(response.data);
-          })
-          .catch(error => {
-            console.error('There was an error fetching the announcements!', error);
-          });
-      }, []);
+    // useEffect(() => {
+    //     axios.get('https://gametric.pythonanywhere.com/announcements')
+    //       .then(response => {
+    //         setAnnouncements(response.data);
+    //       })
+    //       .catch(error => {
+    //         console.error('There was an error fetching the announcements!', error);
+    //       });
+    //   }, []);
 
       const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +43,7 @@ const Announcements = () => {
     <div className="announcements-section">
       <h1>Announcements</h1>
       <ul className="announcement-list">
-        {announcements.map(announcement => (
+        {AnnouncementsData.map(announcement => (
           <li className="announcement-item" key={announcement.id}>
             <h2 className="title">{announcement.title}</h2>
             <p className="content">{announcement.content}</p>
