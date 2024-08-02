@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import AnnouncementForm from './announcementForm';
-import Contact from './contact';
 import Services from '../components/Services';
 import { AnnouncementsData } from '../components/AnnouncementsData';
 import Announcements from './Announcements';
 
 const Home = () => {
-  const [announcements, setAnnouncements] = useState([]);
   const [page, setPage] = useState("Home"); // Default page is Home
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    content: ''
+    message: ''
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const dataToSend = {
+      title: `${formData.name} ${formData.email}`,
+      content: formData.message
+    };
+    axios.post('https://gametric.pythonanywhere.com/announcements', dataToSend)
+      .then(response => {
+        alert(response.data.message);
+      })
+      .catch(error => {
+        console.error('There was an error sending the message!', error);
+      });
   };
 
   const renderPage = () => {
@@ -32,9 +45,9 @@ const Home = () => {
         return (
           <div>
             <span className='overlayImg'></span>
-        <section className="homeHead">
-      <div className="content-container">
-        <h1 className="main-title">Welcome to Gametric Network</h1>
+            <section className="homeHead">
+              <div className="content-container">
+                <h1 className="main-title">Welcome to Gametric Network</h1>
                 <p className="main-description">
                   We deliver cutting-edge software solutions that drive business success and foster technological growth in Africa. Committed to quality, innovation, and excellence in every project we undertake, ensuring the highest level of customer satisfaction.
                 </p>
@@ -89,7 +102,7 @@ const Home = () => {
                 </label>
                 <label>
                   <span>Message</span>
-                  <textarea name="content" value={formData.content} onChange={handleChange} className='textArea'></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleChange} className='textArea'></textarea>
                 </label>
                 <button type="submit">Send Message</button>
               </form>
@@ -97,27 +110,6 @@ const Home = () => {
           </div>
         );
     }
-  };
-
-  // useEffect(() => {
-  //   axios.get('https://gametric.pythonanywhere.com/announcements')
-  //     .then(response => {
-  //       setAnnouncements(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('There was an error fetching the announcements!', error);
-  //     });
-  // }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('https://gametric.pythonanywhere.com/send_message', formData)
-      .then(response => {
-        alert(response.data.message);
-      })
-      .catch(error => {
-        console.error('There was an error sending the message!', error);
-      });
   };
 
   return (
